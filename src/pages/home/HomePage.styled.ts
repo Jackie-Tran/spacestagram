@@ -8,4 +8,10 @@ export const HomePageContainer = styled.div`
   margin-right: auto;
 `;
 
-export const Text = styled.p``;
+export const CardContainer = styled.div`
+  display: flex;
+  margin-top: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;

@@ -1,11 +1,25 @@
 import React from 'react';
+import { FetchRoverImages } from '../../api/fetchRoverImages';
+import { useApiFetch } from '../../api/useApiFetch';
 import Header from '../../components/Header';
-import { HomePageContainer } from './HomePage.styled';
+import PostCard from '../../components/PostCard';
+import { CardContainer, HomePageContainer } from './HomePage.styled';
 
-const HomePage: React.FC = () => (
-  <HomePageContainer>
-    <Header />
-  </HomePageContainer>
-);
+const HomePage: React.FC = () => {
+  const { status, data } = useApiFetch(FetchRoverImages);
+
+  console.log(status, data);
+
+  return (
+    <HomePageContainer>
+      <Header />
+      <CardContainer>
+        {data?.map(() => (
+          <PostCard />
+        ))}
+      </CardContainer>
+    </HomePageContainer>
+  );
+};
 
 export default HomePage;
