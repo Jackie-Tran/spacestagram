@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { ThemeProvider } from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
 import Theme from './theme/theme';
 import HomePage from './pages/home';
+import LikesContext from './context/LikesContext';
 
-const App: React.FC = () => (
-  <ThemeProvider theme={Theme}>
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-    </Routes>
-  </ThemeProvider>
-);
+const App: React.FC = () => {
+  const [likes, setLikes] = useState<number[]>([]);
+  return (
+    <ThemeProvider theme={Theme}>
+      <LikesContext.Provider value={{ likes, setLikes }}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </LikesContext.Provider>
+    </ThemeProvider>
+  );
+};
 
 export default App;

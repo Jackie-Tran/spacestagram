@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import dayjs from 'dayjs';
 import { RoverImageDataType } from '../../api/fetchRoverImages';
 import {
@@ -8,14 +8,16 @@ import {
   PostCardContainer,
   RoverImage,
 } from './PostCard.styled';
+import useLikeSystem from '../../hooks/useLikeSystem';
 
 const PostCard: React.FC<RoverImageDataType> = ({
   camera,
   earthDate,
   imgSrc,
   rover,
+  id,
 }) => {
-  const [liked, setLiked] = useState<boolean>(false);
+  const { likes, likeImage, unlikeImage } = useLikeSystem();
   return (
     <PostCardContainer>
       <RoverImage src={imgSrc} />
@@ -25,11 +27,11 @@ const PostCard: React.FC<RoverImageDataType> = ({
         <button
           onClick={() => {
             // eslint-disable-next-line no-unused-expressions
-            liked ? setLiked(false) : setLiked(true);
+            likes.includes(id) ? unlikeImage(id) : likeImage(id);
           }}
           type="button"
         >
-          {liked ? 'Unlike' : 'Like'}
+          {likes.includes(id) ? 'Unlike' : 'Like'}
         </button>
       </CardContent>
     </PostCardContainer>
