@@ -1,16 +1,16 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-export type ApiFetchParams = {
+export type ApiFetchParams<DataType> = {
   query: string;
   params?: Record<string, any>;
   payload?: Record<string, string>;
-  responseTransformer?: (_res: any) => Record<string, any>;
+  responseTransformer?: (_res: any) => DataType;
 };
 
-export type ApiFetchResponse = {
+export type ApiFetchResponse<DataType> = {
   status: string;
-  data: any;
+  data: DataType | null;
 };
 
 type QueryStatus = 'LOADING' | 'FAIL' | 'SUCCESS';
@@ -25,14 +25,14 @@ const buildQuery = (endpoint: string, params: Record<string, any>): string => {
   return endpoint + paramString;
 };
 
-export const useApiFetch = ({
+export function useApiFetch<DataType>({
   query,
   params = {},
   payload = {},
   responseTransformer = identityTransformer,
-}: ApiFetchParams): ApiFetchResponse => {
+}: ApiFetchParams<DataType>): ApiFetchResponse<DataType> {
   const [status, setStatus] = useState<QueryStatus>('LOADING');
-  const [data, setData] = useState<Record<string, any>>();
+  const [data, setData] = useState<DataType | null>(null);
 
   useEffect(() => {
     const newEndpoint = buildQuery(query, params);
@@ -49,4 +49,4 @@ export const useApiFetch = ({
   }, []);
 
   return { status, data };
-};
+}

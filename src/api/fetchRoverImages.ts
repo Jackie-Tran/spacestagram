@@ -25,7 +25,7 @@ export type RoverImageDataType = {
   sol: number;
 };
 
-export const FetchRoverImages: ApiFetchParams = {
+export const FetchRoverImages: ApiFetchParams<RoverImageDataType[]> = {
   query: 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos',
   params: {
     sol: 1000,
