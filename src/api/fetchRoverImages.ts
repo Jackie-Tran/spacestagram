@@ -1,26 +1,25 @@
-import axios from 'axios';
 import { ApiFetchParams } from './useApiFetch';
 
 export type CameraType = {
-  full_name: string;
+  fullName: string;
   id: number;
   name: string;
-  rover_id: number;
+  roverId: number;
 };
 
 export type RoverType = {
   id: number;
-  landing_date: string;
-  launch_date: string;
+  landingDate: string;
+  launchDate: string;
   name: string;
   status: string;
 };
 
 export type RoverImageDataType = {
   camera: CameraType;
-  earth_date: string;
+  earthDate: string;
   id: number;
-  img_src: string;
+  imgSrc: string;
   rover: RoverType;
   sol: number;
 };
@@ -32,19 +31,24 @@ export const FetchRoverImages: ApiFetchParams<RoverImageDataType[]> = {
     page: 1,
   },
   payload: {},
-  responseTransformer: res => res.data.photos,
+  responseTransformer: res =>
+    res.data.photos.map((data: any) => ({
+      camera: {
+        id: data.camera.id,
+        fullName: data.camera.full_name,
+        name: data.camera.name,
+        roverId: data.camera.rover_id,
+      },
+      earthDate: data.earth_date,
+      id: data.id,
+      imgSrc: data.img_src,
+      rover: {
+        id: data.rover.id,
+        landingDate: data.rover.landing_date,
+        launchDate: data.rover.launch_date,
+        name: data.rover.name,
+        status: data.rover.status,
+      },
+      sol: data.sol,
+    })),
 };
-
-const fetchRoverImages = async (): Promise<RoverImageDataType[]> => {
-  try {
-    const res = await axios.get(
-      `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=1&api_key=${process.env.REACT_APP_NASA_API_KEY}`
-    );
-    return res.data.photos;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};
-
-export default fetchRoverImages;

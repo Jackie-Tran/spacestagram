@@ -17,8 +17,8 @@ const HomePage: React.FC = () => {
     <HomePageContainer>
       <Header />
       <CardContainer>
-        {data?.map(() => (
-          <PostCard />
+        {data?.map(item => (
+          <PostCard key={item.id} {...item} />
         ))}
       </CardContainer>
     </HomePageContainer>

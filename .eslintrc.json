@@ -42,6 +42,7 @@
     "@typescript-eslint/no-unused-vars": [
       "error",
       { "argsIgnorePattern": "^_" }
-    ]
+    ],
+    "react/jsx-props-no-spreading": "off"
   }
 }
