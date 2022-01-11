@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { RoverImageDataType } from '../../api/fetchRoverImages';
+import { RoverImageDataType } from '../../api/getRoverImages';
 import {
   CardContent,
   CardText,

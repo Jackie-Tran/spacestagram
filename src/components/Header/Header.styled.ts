@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.div`
   background-color: #f4d9c5;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const TextContainer = styled.div`

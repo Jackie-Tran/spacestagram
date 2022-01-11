@@ -10,7 +10,7 @@ export type ApiFetchParams<DataType> = {
 
 export type ApiFetchResponse<DataType> = {
   status: string;
-  data: DataType | null;
+  data: DataType | undefined;
 };
 
 type QueryStatus = 'LOADING' | 'FAIL' | 'SUCCESS';
@@ -32,7 +32,7 @@ export function useApiFetch<DataType>({
   responseTransformer = identityTransformer,
 }: ApiFetchParams<DataType>): ApiFetchResponse<DataType> {
   const [status, setStatus] = useState<QueryStatus>('LOADING');
-  const [data, setData] = useState<DataType | null>(null);
+  const [data, setData] = useState<DataType>();
 
   useEffect(() => {
     const newEndpoint = buildQuery(query, params);

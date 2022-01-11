@@ -1,15 +1,12 @@
 import React from 'react';
-import {
-  FetchRoverImages,
-  RoverImageDataType,
-} from '../../api/fetchRoverImages';
+import { GetRoverImages, RoverImageDataType } from '../../api/getRoverImages';
 import { useApiFetch } from '../../api/useApiFetch';
 import Header from '../../components/Header';
 import PostCard from '../../components/PostCard';
 import { CardContainer, HomePageContainer } from './HomePage.styled';
 
 const HomePage: React.FC = () => {
-  const { status, data } = useApiFetch<RoverImageDataType[]>(FetchRoverImages);
+  const { status, data } = useApiFetch<RoverImageDataType[]>(GetRoverImages);
 
   console.log(status, data);
 
