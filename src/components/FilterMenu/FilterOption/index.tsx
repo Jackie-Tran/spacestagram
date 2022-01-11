@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import {
   FilterOptionContainer,
   FilterOptionName,
@@ -8,22 +8,31 @@ import {
 export type FilterOptionProps = {
   filterName: string;
   options?: Record<string, string>;
+  currentFilter?: any;
+  setFilter: Dispatch<SetStateAction<string>>;
 };
 
 const FilterOption: React.FC<FilterOptionProps> = ({
   filterName,
   options = {},
+  setFilter,
 }) => {
-  const [selected] = useState<string>();
-  console.log(selected);
-  console.log(filterName, options);
+  const onSelect = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+    setFilter(e.currentTarget.value);
+  };
   return (
     <FilterOptionContainer>
       <FilterOptionName>{filterName}</FilterOptionName>
       <OptionsWrapper>
         {Object.entries(options).map(([key, value]) => (
           <label key={key} htmlFor={value}>
-            <input id={value} type="radio" name={filterName} value={value} />
+            <input
+              id={value}
+              type="radio"
+              name={filterName}
+              value={value}
+              onClick={onSelect}
+            />
             {key}
           </label>
         ))}

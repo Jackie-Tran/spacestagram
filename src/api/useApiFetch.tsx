@@ -46,6 +46,7 @@ export function useApiFetch<DataType>({
       }
     };
     fetchData();
+    console.log('fetching data');
   }, []);
 
   return { status, data };

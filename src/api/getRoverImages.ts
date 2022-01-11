@@ -24,12 +24,29 @@ export type RoverImageDataType = {
   sol: number;
 };
 
-export const GetRoverImages: ApiFetchParams<RoverImageDataType[]> = {
-  query: 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos',
-  params: {
-    sol: 1000,
+export type RoverImageQueryOptions = {
+  captureDate?: string;
+  rover?: string;
+  camera?: string;
+};
+
+const buildParams = (params: any) =>
+  Object.fromEntries(
+    Object.entries(params).filter(([_, value]) => value !== '')
+  );
+
+export const GetRoverImages = ({
+  captureDate,
+  rover,
+  camera,
+}: RoverImageQueryOptions): ApiFetchParams<RoverImageDataType[]> => ({
+  query: `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos`,
+  params: buildParams({
     page: 1,
-  },
+    sol: 1000,
+    captureDate,
+    camera,
+  }),
   payload: {},
   responseTransformer: res =>
     res.data.photos.map((data: any) => ({
@@ -51,4 +68,4 @@ export const GetRoverImages: ApiFetchParams<RoverImageDataType[]> = {
       },
       sol: data.sol,
     })),
-};
+});
