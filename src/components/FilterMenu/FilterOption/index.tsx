@@ -15,10 +15,11 @@ export type FilterOptionProps = {
 const FilterOption: React.FC<FilterOptionProps> = ({
   filterName,
   options = {},
+  currentFilter,
   setFilter,
 }) => {
-  const onSelect = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
-    setFilter(e.currentTarget.value);
+  const onSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFilter(e.target.value);
   };
   return (
     <FilterOptionContainer>
@@ -31,7 +32,8 @@ const FilterOption: React.FC<FilterOptionProps> = ({
               type="radio"
               name={filterName}
               value={value}
-              onClick={onSelect}
+              onChange={onSelect}
+              checked={value === currentFilter}
             />
             {key}
           </label>

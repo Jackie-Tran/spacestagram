@@ -9,11 +9,11 @@ export type ApiFetchParams<DataType> = {
 };
 
 export type ApiFetchResponse<DataType> = {
-  status: string;
+  status: QueryStatus;
   data: DataType | undefined;
 };
 
-type QueryStatus = 'LOADING' | 'FAIL' | 'SUCCESS';
+export type QueryStatus = 'LOADING' | 'FAIL' | 'SUCCESS';
 
 const identityTransformer = (res: any) => res;
 

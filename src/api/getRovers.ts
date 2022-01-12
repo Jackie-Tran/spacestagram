@@ -8,7 +8,8 @@ export const GetRoverOptions: ApiFetchParams<RoverOptionsType> = {
   payload: {},
   responseTransformer: res =>
     res.data.rovers.reduce(
-      (obj: any, item: any) => Object.assign(obj, { [item.name]: item.name }),
+      (obj: any, item: any) =>
+        Object.assign(obj, { [item.name]: item.name.toLowerCase() }),
       {}
     ),
 };
