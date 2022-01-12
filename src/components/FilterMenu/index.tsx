@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   FilterButton,
   FilterWrapper,
@@ -8,19 +6,26 @@ import {
   MenuTitle,
 } from './FilterMenu.styled';
 
-const roverOptions = {
-  Curiosity: 'curiosity',
-  Spirit: 'spirit',
-  Opportunity: 'opportunity',
-  Perseverance: 'perseverance',
-};
-
 const FilterMenu: React.FC = ({ children }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setOpen(!isOpen);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (e: any) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuRef]);
 
   return (
     <FilterWrapper>
@@ -28,7 +33,7 @@ const FilterMenu: React.FC = ({ children }) => {
         Filters
       </FilterButton>
       {isOpen && (
-        <MenuContainer>
+        <MenuContainer ref={menuRef}>
           <MenuTitle>Filters</MenuTitle>
           {children}
         </MenuContainer>

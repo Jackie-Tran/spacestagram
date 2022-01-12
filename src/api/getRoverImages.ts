@@ -40,16 +40,14 @@ export const GetRoverImages = ({
   rover,
   camera,
 }: RoverImageQueryOptions): ApiFetchParams<RoverImageDataType[]> => ({
-  query: `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos`,
+  query: `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/latest_photos`,
   params: buildParams({
-    page: 1,
-    sol: 1000,
     captureDate,
     camera,
   }),
   payload: {},
   responseTransformer: res =>
-    res.data.photos.map((data: any) => ({
+    res.data.latest_photos.map((data: any) => ({
       camera: {
         id: data.camera.id,
         fullName: data.camera.full_name,
