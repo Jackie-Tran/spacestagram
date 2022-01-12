@@ -12,11 +12,9 @@ const HomePage: React.FC = () => {
   const [rover, setRover] = useState<string>('curiosity');
   const [camera, setCamera] = useState<string>('');
 
-  const { status, data } = useApiFetch<RoverImageDataType[]>(
+  const { data } = useApiFetch<RoverImageDataType[]>(
     GetRoverImages({ captureDate, rover, camera })
   );
-
-  console.log(status, data);
 
   return (
     <FiltersContext.Provider

@@ -9,13 +9,15 @@ import LikesContext from './context/LikesContext';
 const App: React.FC = () => {
   const [likes, setLikes] = useState<number[]>([]);
   return (
-    <ThemeProvider theme={Theme}>
-      <LikesContext.Provider value={{ likes, setLikes }}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-        </Routes>
-      </LikesContext.Provider>
-    </ThemeProvider>
+    <React.StrictMode>
+      <ThemeProvider theme={Theme}>
+        <LikesContext.Provider value={{ likes, setLikes }}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </LikesContext.Provider>
+      </ThemeProvider>
+    </React.StrictMode>
   );
 };
 

@@ -33,12 +33,17 @@ export function useApiFetch<DataType>({
 }: ApiFetchParams<DataType>): ApiFetchResponse<DataType> {
   const [status, setStatus] = useState<QueryStatus>('LOADING');
   const [data, setData] = useState<DataType>();
+  const [endpoint, setEndpoint] = useState<string>(buildQuery(query, params));
 
   useEffect(() => {
-    const newEndpoint = buildQuery(query, params);
+    setEndpoint(buildQuery(query, params));
+  }, [params]);
+
+  useEffect(() => {
+    setStatus('LOADING');
     const fetchData = async () => {
       try {
-        const res = await axios.get(newEndpoint, payload);
+        const res = await axios.get(endpoint, payload);
         setData(responseTransformer(res));
         setStatus('SUCCESS');
       } catch (error) {
@@ -46,8 +51,7 @@ export function useApiFetch<DataType>({
       }
     };
     fetchData();
-    console.log('fetching data');
-  }, []);
+  }, [endpoint]);
 
   return { status, data };
 }
