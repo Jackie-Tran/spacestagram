@@ -6,11 +6,12 @@ export const HomePageContainer = styled.div`
   min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
+  overflow-x: hidden;
 `;
 
 export const CardContainer = styled.div`
   display: flex;
-  margin-top: 1rem;
+  margin-top: 5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;

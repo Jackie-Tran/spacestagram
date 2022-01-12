@@ -3,10 +3,13 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.div`
   background-color: #f4d9c5;
   padding: 1.5rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  width: 100%;
 `;
 
 export const TextContainer = styled.div`
