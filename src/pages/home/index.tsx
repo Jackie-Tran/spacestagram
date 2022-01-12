@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
         <Header />
         <LoadingContent
           queryStatus={status}
-          noDataCondition={data !== undefined && data.length === 0}
+          noDataCondition={data !== undefined && data.length <= 0}
         >
           <CardContainer>
             {data?.map(item => (

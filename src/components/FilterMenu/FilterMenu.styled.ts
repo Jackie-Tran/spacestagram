@@ -19,6 +19,13 @@ export const FilterButton = styled.button`
   padding: 0.5rem 1.5rem;
   border-radius: 8px;
   width: 10em;
+  transition: background-color 0.2s;
+  &:hover {
+    background-color: #ffb694;
+  }
+  &:active {
+    background-color: #ff9e71;
+  }
 `;
 
 export const MenuContainer = styled.div`

@@ -9,6 +9,7 @@ import {
 const FilterMenu: React.FC = ({ children }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const toggleMenu = () => {
     setOpen(!isOpen);
@@ -16,7 +17,12 @@ const FilterMenu: React.FC = ({ children }) => {
 
   useEffect(() => {
     const handleClickOutside = (e: any) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
+      if (
+        menuRef.current &&
+        buttonRef.current &&
+        !buttonRef.current.contains(e.target) &&
+        !menuRef.current.contains(e.target)
+      ) {
         setOpen(false);
       }
     };
@@ -29,7 +35,7 @@ const FilterMenu: React.FC = ({ children }) => {
 
   return (
     <FilterWrapper>
-      <FilterButton onClick={toggleMenu} type="button">
+      <FilterButton onClick={toggleMenu} type="button" ref={buttonRef}>
         Filters
       </FilterButton>
       {isOpen && (

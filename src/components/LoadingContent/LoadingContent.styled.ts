@@ -25,8 +25,9 @@ export const SpinnerImage = styled.img`
 
 export const ContentContainer = styled.div`
   display: flex;
-  width: 100%;
+  width: 100vw;
   height: 100%;
+  min-height: 100vh;
   padding: 5rem;
   justify-content: center;
   align-items: center;

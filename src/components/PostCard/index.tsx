@@ -5,6 +5,7 @@ import {
   CardContent,
   CardText,
   CardTitle,
+  LikeButton,
   PostCardContainer,
   RoverImage,
 } from './PostCard.styled';
@@ -18,21 +19,24 @@ const PostCard: React.FC<RoverImageDataType> = ({
   id,
 }) => {
   const { likes, likeImage, unlikeImage } = useLikeSystem();
+
+  const onLikeClick = () => {
+    if (likes.includes(id)) {
+      unlikeImage(id);
+    } else {
+      likeImage(id);
+    }
+  };
+
   return (
     <PostCardContainer>
       <RoverImage src={imgSrc} />
       <CardContent>
         <CardTitle>{`${rover.name} - ${camera.fullName}`}</CardTitle>
         <CardText>{dayjs(earthDate).format('MMMM D YYYY')}</CardText>
-        <button
-          onClick={() => {
-            // eslint-disable-next-line no-unused-expressions
-            likes.includes(id) ? unlikeImage(id) : likeImage(id);
-          }}
-          type="button"
-        >
+        <LikeButton onClick={onLikeClick} type="button">
           {likes.includes(id) ? 'Unlike' : 'Like'}
-        </button>
+        </LikeButton>
       </CardContent>
     </PostCardContainer>
   );

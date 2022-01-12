@@ -29,3 +29,20 @@ export const CardText = styled.p`
   font-weight: 500;
   font-size: 1.1em;
 `;
+
+export const LikeButton = styled.button`
+  ${({ theme }) => theme.fonts.quicksand}
+  background-color: white;
+  border: solid 1px black;
+  border-color: #c2c2c2;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.25s;
+  &:hover {
+    background-color: #f6f6f6;
+  }
+
+  &:active {
+    background-color: #ededed;
+  }
+`;

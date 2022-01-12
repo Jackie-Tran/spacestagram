@@ -1,8 +1,10 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import {
+  FilterLabel,
   FilterOptionContainer,
   FilterOptionName,
   OptionsWrapper,
+  RadioButton,
 } from './FilterOption.styled';
 
 export type FilterOptionProps = {
@@ -26,8 +28,8 @@ const FilterOption: React.FC<FilterOptionProps> = ({
       <FilterOptionName>{filterName}</FilterOptionName>
       <OptionsWrapper>
         {Object.entries(options).map(([key, value]) => (
-          <label key={key} htmlFor={value}>
-            <input
+          <FilterLabel key={key} htmlFor={value}>
+            <RadioButton
               id={value}
               type="radio"
               name={filterName}
@@ -36,7 +38,7 @@ const FilterOption: React.FC<FilterOptionProps> = ({
               checked={value === currentFilter}
             />
             {key}
-          </label>
+          </FilterLabel>
         ))}
       </OptionsWrapper>
     </FilterOptionContainer>

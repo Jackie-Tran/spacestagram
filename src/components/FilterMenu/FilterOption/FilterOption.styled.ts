@@ -14,3 +14,17 @@ export const OptionsWrapper = styled.div`
   gap: 0.25rem;
   padding-left: 1rem;
 `;
+
+export const RadioButton = styled.input`
+  margin-right: 1rem;
+`;
+
+export const FilterLabel = styled.label`
+  ${({ theme }) => theme.fonts.quicksand};
+  font-size: 1em;
+  font-size: 500;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+`;
