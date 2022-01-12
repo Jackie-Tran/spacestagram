@@ -17,8 +17,6 @@ const HomePage: React.FC = () => {
     GetRoverImages({ captureDate, rover, camera })
   );
 
-  console.log(data);
-
   return (
     <FiltersContext.Provider
       value={{

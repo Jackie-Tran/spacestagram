@@ -48,7 +48,6 @@ export function useApiFetch<DataType>({
         setStatus('SUCCESS');
       } catch (error) {
         setStatus('FAIL');
-        console.log(error);
       }
     };
     fetchData();
