@@ -11,27 +11,18 @@ export const SpinnerImage = styled.img`
   overflow: hidden;
   width: 100%;
   height: 100%;
-  animation: spin 2s infinite;
-  animation-timing-function: linear;
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
 `;
 
 export const ContentContainer = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   min-height: 100vh;
-  padding: 5rem;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  position: relative;
+  z-index: 1;
 `;
 
 export const LoadingText = styled.p`

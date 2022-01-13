@@ -10,6 +10,7 @@ export const HeaderContainer = styled.div`
   align-items: center;
   position: fixed;
   width: 100%;
+  z-index: 500;
 `;
 
 export const TextContainer = styled.div`
@@ -20,7 +21,7 @@ export const TextContainer = styled.div`
 export const Title = styled.h1`
   ${({ theme }) => theme.fonts.quicksand};
   color: ${({ theme }) => theme.colors.headingText};
-  font-size: 1.5em;
+  font-size: 1.75em;
   font-weight: 700;
 `;
 

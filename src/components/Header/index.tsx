@@ -5,12 +5,7 @@ import { useApiFetch } from '../../api/useApiFetch';
 import FiltersContext from '../../context/FiltersContext';
 import FilterMenu from '../FilterMenu';
 import FilterOption from '../FilterMenu/FilterOption';
-import {
-  HeaderContainer,
-  Subtitle,
-  TextContainer,
-  Title,
-} from './Header.styled';
+import { HeaderContainer, TextContainer, Title } from './Header.styled';
 
 const Header: React.FC = () => {
   const { data: rovers } = useApiFetch<RoverOptionsType>(GetRoverOptions);
@@ -22,7 +17,6 @@ const Header: React.FC = () => {
     <HeaderContainer>
       <TextContainer>
         <Title>Spacestagram</Title>
-        <Subtitle>Image sharing from the final frontier</Subtitle>
       </TextContainer>
       <FilterMenu>
         <FilterOption filterName="Capture Date" setFilter={setCaptureDate} />

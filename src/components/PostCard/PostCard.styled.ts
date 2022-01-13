@@ -3,19 +3,26 @@ import styled from 'styled-components';
 export const PostCardContainer = styled.div`
   background-color: white;
   border: 1px solid #c2c2c2;
-  width: 35%;
-  height: 45em;
+  width: 80%;
+  height: 30em;
   border-radius: 8px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const RoverImage = styled.img`
   width: 100%;
-  height: 80%;
+  flex: 4;
 `;
 
 export const CardContent = styled.div`
   padding: 0.5rem 0.75rem;
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
 `;
 
 export const CardTitle = styled.h1`

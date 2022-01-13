@@ -1,6 +1,6 @@
 import React from 'react';
 import { QueryStatus } from '../../api/useApiFetch';
-import Spinner from '../../images/loader.svg';
+import Spinner from '../../images/loader.gif';
 import {
   ContentContainer,
   LoadingText,

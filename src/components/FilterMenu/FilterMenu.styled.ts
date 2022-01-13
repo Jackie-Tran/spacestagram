@@ -6,7 +6,6 @@ export const FilterWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 5rem;
 `;
 
 export const FilterButton = styled.button`
@@ -17,8 +16,9 @@ export const FilterButton = styled.button`
   font-size: 1.2em;
   font-weight: 700;
   padding: 0.5rem 1.5rem;
+  box-sizing: border-box;
   border-radius: 8px;
-  width: 10em;
+  width: 5em;
   transition: background-color 0.2s;
   &:hover {
     background-color: #ffb694;
@@ -35,18 +35,20 @@ export const MenuContainer = styled.div`
   position: absolute;
   width: 19em;
   top: calc(100% + 1rem);
+  right: 0;
   max-height: 40em;
   overflow-y: scroll;
+  z-index: 500;
 `;
 
 export const MenuTitle = styled.h2`
   ${({ theme }) => theme.fonts.quicksand}
   font-weight: 700;
-  font-size: 1.2em;
+  font-size: 2em;
+  text-decoration: underline;
 `;
 
-export const FilterTitle = styled.h3`
-  ${({ theme }) => theme.fonts.quicksand}
-  font-weight: 700;
-  font-size: 1.1em;
+export const FilterIconButton = styled.button`
+  background: none;
+  border: none;
 `;

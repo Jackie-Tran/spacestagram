@@ -11,7 +11,8 @@ export const HomePageContainer = styled.div`
 
 export const CardContainer = styled.div`
   display: flex;
-  margin-top: 5rem;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
