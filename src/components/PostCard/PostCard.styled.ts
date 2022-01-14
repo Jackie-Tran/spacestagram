@@ -9,20 +9,44 @@ export const PostCardContainer = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  @media screen and (min-width: 600px) {
+    width: 60%;
+    height: 35em;
+  }
+  @media screen and (min-width: 800px) {
+    width: 50%;
+    height: 35em;
+  }
+  @media screen and (min-width: 1000px) {
+    width: 40%;
+    height: 35em;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 25%;
+    height: 35em;
+  }
 `;
 
 export const RoverImage = styled.img`
   width: 100%;
-  flex: 4;
+  height: 60%;
+  @media screen and (min-width: 600px) {
+    height: 65%;
+  }
 `;
 
 export const CardContent = styled.div`
-  padding: 0.5rem 0.75rem;
+  padding: 1rem 0.75rem;
   display: flex;
-  flex: 2;
+  flex: 1;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: flex-start;
+`;
+
+export const TextSection = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const CardTitle = styled.h1`
