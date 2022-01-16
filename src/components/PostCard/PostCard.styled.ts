@@ -4,41 +4,45 @@ export const PostCardContainer = styled.div`
   background-color: white;
   border: 1px solid #c2c2c2;
   width: 80%;
-  height: 30em;
+  min-height: 30em;
   border-radius: 8px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow: hidden;
   @media screen and (min-width: 600px) {
     width: 60%;
-    height: 35em;
+    min-height: 35em;
   }
   @media screen and (min-width: 800px) {
     width: 50%;
-    height: 35em;
+    min-height: 35em;
   }
   @media screen and (min-width: 1000px) {
     width: 40%;
-    height: 35em;
+    min-height: 35em;
   }
   @media screen and (min-width: 1200px) {
-    width: 25%;
-    height: 35em;
+    width: 30%;
+    min-height: 35em;
   }
 `;
 
-export const RoverImage = styled.img`
+export const CardImage = styled.img`
   width: 100%;
-  height: 60%;
+  height: 18em;
+  object-fit: cover;
   @media screen and (min-width: 600px) {
-    height: 65%;
+    height: 20em;
+  }
+  @media screen and (min-width: 1000px) {
+    height: 25em;
   }
 `;
 
 export const CardContent = styled.div`
   padding: 1rem 0.75rem;
   display: flex;
-  flex: 1;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
@@ -55,10 +59,17 @@ export const CardTitle = styled.h1`
   font-size: 1.3em;
 `;
 
+export const CardDate = styled.p`
+  ${({ theme }) => theme.fonts.quicksand};
+  font-weight: 600;
+  font-size: 1.2em;
+`;
+
 export const CardText = styled.p`
   ${({ theme }) => theme.fonts.quicksand};
   font-weight: 500;
-  font-size: 1.1em;
+  font-size: 1em;
+  margin: 0.5rem 0rem;
 `;
 
 export const LikeButton = styled.button`

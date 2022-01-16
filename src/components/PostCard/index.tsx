@@ -3,16 +3,22 @@ import dayjs from 'dayjs';
 import { APODImageDataType } from '../../api/getAPOD';
 import {
   CardContent,
+  CardDate,
+  CardImage,
   CardText,
   CardTitle,
   LikeButton,
   PostCardContainer,
-  RoverImage,
   TextSection,
 } from './PostCard.styled';
 import useLikeSystem from '../../hooks/useLikeSystem';
 
-const PostCard: React.FC<APODImageDataType> = ({ title, date, url }) => {
+const PostCard: React.FC<APODImageDataType> = ({
+  title,
+  date,
+  url,
+  explanation,
+}) => {
   const { likes, likeImage, unlikeImage } = useLikeSystem();
 
   const onLikeClick = () => {
@@ -25,11 +31,12 @@ const PostCard: React.FC<APODImageDataType> = ({ title, date, url }) => {
 
   return (
     <PostCardContainer>
-      <RoverImage src={url} />
+      <CardImage src={url} />
       <CardContent>
         <TextSection>
           <CardTitle>{title}</CardTitle>
-          <CardText>{dayjs(date).format('MMMM D YYYY')}</CardText>
+          <CardDate>{dayjs(date).format('MMMM D YYYY')}</CardDate>
+          <CardText>{explanation}</CardText>
         </TextSection>
         <LikeButton onClick={onLikeClick} type="button">
           {likes.includes(date) ? 'Unlike' : 'Like'}

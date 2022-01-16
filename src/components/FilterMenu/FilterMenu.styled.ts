@@ -40,8 +40,7 @@ export const MenuContainer = styled.div`
   position: absolute;
   top: calc(100% + 1rem);
   right: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow: hidden;
 `;
 
 export const MenuTitle = styled.h2`
