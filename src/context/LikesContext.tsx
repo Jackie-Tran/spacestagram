@@ -1,8 +1,8 @@
 import { createContext, Dispatch, SetStateAction } from 'react';
 
 type LikesContextType = {
-  likes: number[];
-  setLikes: Dispatch<SetStateAction<number[]>>;
+  likes: string[];
+  setLikes: Dispatch<SetStateAction<string[]>>;
 };
 
 const LikesContext = createContext<LikesContextType>({

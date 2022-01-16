@@ -4,13 +4,16 @@ import LikesContext from '../context/LikesContext';
 const useLikeSystem = () => {
   const { likes, setLikes } = useContext(LikesContext);
 
-  const likeImage = (id: number) => {
-    setLikes([...likes, id]);
-    localStorage.setItem('likes', JSON.stringify([...likes, id]));
+  const likeImage = (date: string) => {
+    setLikes([...likes, date]);
+    localStorage.setItem('likes', JSON.stringify([...likes, date]));
   };
-  const unlikeImage = (id: number) => {
-    setLikes(likes.filter(i => i !== id));
-    localStorage.setItem('likes', JSON.stringify(likes.filter(i => i !== id)));
+  const unlikeImage = (date: string) => {
+    setLikes(likes.filter(i => i !== date));
+    localStorage.setItem(
+      'likes',
+      JSON.stringify(likes.filter(i => i !== date))
+    );
   };
 
   useEffect(() => {

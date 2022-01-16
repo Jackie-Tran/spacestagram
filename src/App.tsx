@@ -7,7 +7,7 @@ import HomePage from './pages/home';
 import LikesContext from './context/LikesContext';
 
 const App: React.FC = () => {
-  const [likes, setLikes] = useState<number[]>([]);
+  const [likes, setLikes] = useState<string[]>([]);
   return (
     <React.StrictMode>
       <ThemeProvider theme={Theme}>

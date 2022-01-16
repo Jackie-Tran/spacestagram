@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { RoverImageDataType } from '../../api/getRoverImages';
+import { APODImageDataType } from '../../api/getAPOD';
 import {
   CardContent,
   CardText,
@@ -12,33 +12,27 @@ import {
 } from './PostCard.styled';
 import useLikeSystem from '../../hooks/useLikeSystem';
 
-const PostCard: React.FC<RoverImageDataType> = ({
-  camera,
-  earthDate,
-  imgSrc,
-  rover,
-  id,
-}) => {
+const PostCard: React.FC<APODImageDataType> = ({ title, date, url }) => {
   const { likes, likeImage, unlikeImage } = useLikeSystem();
 
   const onLikeClick = () => {
-    if (likes.includes(id)) {
-      unlikeImage(id);
+    if (likes.includes(date)) {
+      unlikeImage(date);
     } else {
-      likeImage(id);
+      likeImage(date);
     }
   };
 
   return (
     <PostCardContainer>
-      <RoverImage src={imgSrc} />
+      <RoverImage src={url} />
       <CardContent>
         <TextSection>
-          <CardTitle>{`${rover.name} - ${camera.fullName}`}</CardTitle>
-          <CardText>{dayjs(earthDate).format('MMMM D YYYY')}</CardText>
+          <CardTitle>{title}</CardTitle>
+          <CardText>{dayjs(date).format('MMMM D YYYY')}</CardText>
         </TextSection>
         <LikeButton onClick={onLikeClick} type="button">
-          {likes.includes(id) ? 'Unlike' : 'Like'}
+          {likes.includes(date) ? 'Unlike' : 'Like'}
         </LikeButton>
       </CardContent>
     </PostCardContainer>

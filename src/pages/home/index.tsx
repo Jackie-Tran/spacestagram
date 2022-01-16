@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import React, { useState } from 'react';
-import { GetRoverImages, RoverImageDataType } from '../../api/getRoverImages';
+import { GetAPODImages, APODImageDataType } from '../../api/getAPOD';
 import { useApiFetch } from '../../api/useApiFetch';
 import Header from '../../components/Header';
 import LoadingContent from '../../components/LoadingContent';
@@ -16,9 +16,7 @@ const HomePage: React.FC = () => {
   const [rover, setRover] = useState<string>('curiosity');
   const [camera, setCamera] = useState<string>('FHAZ');
 
-  const { status, data } = useApiFetch<RoverImageDataType[]>(
-    GetRoverImages({ captureDate, rover, camera })
-  );
+  const { status, data } = useApiFetch<APODImageDataType[]>(GetAPODImages());
 
   return (
     <FiltersContext.Provider
@@ -39,7 +37,7 @@ const HomePage: React.FC = () => {
         >
           <CardContainer>
             {data?.map(item => (
-              <PostCard key={item.id} {...item} />
+              <PostCard key={item.title} {...item} />
             ))}
           </CardContainer>
         </LoadingContent>
