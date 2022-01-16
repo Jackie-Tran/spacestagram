@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const FilterOptionContainer = styled.div``;
+export const FilterOptionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
 
 export const FilterOptionName = styled.h3`
   ${({ theme }) => theme.fonts.quicksand};
@@ -27,4 +31,12 @@ export const FilterLabel = styled.label`
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
+`;
+
+export const DatePicker = styled.input`
+  ${({ theme }) => theme.fonts.quicksand}
+  font-size: 1.1em;
+  padding: 0.2rem 0.3em;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px;
 `;

@@ -10,7 +10,7 @@ import { HeaderContainer, TextContainer, Title } from './Header.styled';
 const Header: React.FC = () => {
   const { data: rovers } = useApiFetch<RoverOptionsType>(GetRoverOptions);
   const { data: cameras } = useApiFetch<CameraOptionsType>(GetRoverCameras);
-  const { setCaptureDate, rover, setRover, camera, setCamera } =
+  const { captureDate, setCaptureDate, rover, setRover, camera, setCamera } =
     useContext(FiltersContext);
 
   return (
@@ -19,7 +19,12 @@ const Header: React.FC = () => {
         <Title>Spacestagram</Title>
       </TextContainer>
       <FilterMenu>
-        <FilterOption filterName="Capture Date" setFilter={setCaptureDate} />
+        <FilterOption
+          inputType="date"
+          filterName="Capture Date"
+          currentFilter={captureDate}
+          setFilter={setCaptureDate}
+        />
         <FilterOption
           filterName="Rover"
           options={rovers}

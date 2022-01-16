@@ -1,5 +1,7 @@
+import dayjs from 'dayjs';
 import React, { Dispatch, SetStateAction } from 'react';
 import {
+  DatePicker,
   FilterLabel,
   FilterOptionContainer,
   FilterOptionName,
@@ -12,6 +14,7 @@ export type FilterOptionProps = {
   options?: Record<string, string>;
   currentFilter?: any;
   setFilter: Dispatch<SetStateAction<string>>;
+  inputType?: React.HTMLInputTypeAttribute;
 };
 
 const FilterOption: React.FC<FilterOptionProps> = ({
@@ -19,27 +22,39 @@ const FilterOption: React.FC<FilterOptionProps> = ({
   options = {},
   currentFilter,
   setFilter,
+  inputType = 'radio',
 }) => {
-  const onSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilter(e.target.value);
   };
   return (
     <FilterOptionContainer>
       <FilterOptionName>{filterName}</FilterOptionName>
       <OptionsWrapper>
-        {Object.entries(options).map(([key, value]) => (
-          <FilterLabel key={key} htmlFor={value}>
-            <RadioButton
-              id={value}
-              type="radio"
-              name={filterName}
-              value={value}
-              onChange={onSelect}
-              checked={value === currentFilter}
-            />
-            {key}
-          </FilterLabel>
-        ))}
+        {inputType === 'date' ? (
+          <DatePicker
+            type={inputType}
+            id="captureDate"
+            name="capture-date"
+            max={dayjs(new Date()).format('YYYY-MM-DD')}
+            value={currentFilter}
+            onChange={onChange}
+          />
+        ) : (
+          Object.entries(options).map(([key, value]) => (
+            <FilterLabel key={key} htmlFor={value}>
+              <RadioButton
+                id={value}
+                type={inputType}
+                name={filterName}
+                value={value}
+                onChange={onChange}
+                checked={value === currentFilter}
+              />
+              {key}
+            </FilterLabel>
+          ))
+        )}
       </OptionsWrapper>
     </FilterOptionContainer>
   );

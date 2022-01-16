@@ -18,7 +18,6 @@ export const FilterButton = styled.button`
   padding: 0.5rem 1.5rem;
   box-sizing: border-box;
   border-radius: 8px;
-  width: 5em;
   transition: background-color 0.2s;
   &:hover {
     background-color: #ffb694;
@@ -30,15 +29,19 @@ export const FilterButton = styled.button`
 
 export const MenuContainer = styled.div`
   background-color: white;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   padding: 1rem;
+  width: 19em;
+  max-height: 40em;
   border-radius: 8px;
   position: absolute;
-  width: 19em;
   top: calc(100% + 1rem);
   right: 0;
-  max-height: 40em;
+  overflow-x: hidden;
   overflow-y: scroll;
-  z-index: 500;
 `;
 
 export const MenuTitle = styled.h2`
