@@ -10,23 +10,24 @@ import { CardContainer, HomePageContainer } from './HomePage.styled';
 
 const HomePage: React.FC = () => {
   // Filters
-  const [captureDate, setCaptureDate] = useState<string>(
+  const [startDate, setStartDate] = useState<string>(
     dayjs(new Date()).format('YYYY-MM-DD')
   );
-  const [rover, setRover] = useState<string>('curiosity');
-  const [camera, setCamera] = useState<string>('FHAZ');
+  const [endDate, setEndDate] = useState<string>(
+    dayjs(new Date()).format('YYYY-MM-DD')
+  );
 
-  const { status, data } = useApiFetch<APODImageDataType[]>(GetAPODImages());
+  const { status, data } = useApiFetch<APODImageDataType[]>(
+    GetAPODImages({ startDate, endDate })
+  );
 
   return (
     <FiltersContext.Provider
       value={{
-        captureDate,
-        rover,
-        camera,
-        setCaptureDate,
-        setRover,
-        setCamera,
+        startDate,
+        endDate,
+        setStartDate,
+        setEndDate,
       }}
     >
       <HomePageContainer>
