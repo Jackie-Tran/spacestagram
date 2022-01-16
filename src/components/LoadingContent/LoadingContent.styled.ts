@@ -15,14 +15,22 @@ export const SpinnerImage = styled.img`
 
 export const ContentContainer = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 5rem;
   width: 100%;
   height: 100%;
-  min-height: 100vh;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
   position: relative;
   z-index: 1;
+
+  @media screen and (min-width: 1000px) {
+    width: 50%;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 30%;
+  }
 `;
 
 export const LoadingText = styled.p`

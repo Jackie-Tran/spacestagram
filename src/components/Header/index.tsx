@@ -4,7 +4,9 @@ import FilterMenu from '../FilterMenu';
 import FilterOption from '../FilterMenu/FilterOption';
 import { HeaderContainer, TextContainer, Title } from './Header.styled';
 
-const Header: React.FC = () => {
+const Header: React.FC<{ showFilterButton: boolean }> = ({
+  showFilterButton,
+}) => {
   const { startDate, setStartDate, endDate, setEndDate } =
     useContext(FiltersContext);
 
@@ -13,20 +15,22 @@ const Header: React.FC = () => {
       <TextContainer>
         <Title>Spacestagram</Title>
       </TextContainer>
-      <FilterMenu>
-        <FilterOption
-          inputType="date"
-          filterName="Start Date"
-          currentFilter={startDate}
-          setFilter={setStartDate}
-        />
-        <FilterOption
-          inputType="date"
-          filterName="End Date"
-          currentFilter={endDate}
-          setFilter={setEndDate}
-        />
-      </FilterMenu>
+      {showFilterButton && (
+        <FilterMenu>
+          <FilterOption
+            inputType="date"
+            filterName="Start Date"
+            currentFilter={startDate}
+            setFilter={setStartDate}
+          />
+          <FilterOption
+            inputType="date"
+            filterName="End Date"
+            currentFilter={endDate}
+            setFilter={setEndDate}
+          />
+        </FilterMenu>
+      )}
     </HeaderContainer>
   );
 };

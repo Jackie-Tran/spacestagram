@@ -16,7 +16,6 @@ export const OptionsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  padding-left: 1rem;
 `;
 
 export const RadioButton = styled.input`

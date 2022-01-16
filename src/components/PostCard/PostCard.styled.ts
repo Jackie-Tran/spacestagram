@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PostCardContainer = styled.div`
   background-color: white;
   border: 1px solid #c2c2c2;
-  width: 80%;
+  width: 85%;
   min-height: 30em;
   border-radius: 8px;
   display: flex;
@@ -19,11 +19,11 @@ export const PostCardContainer = styled.div`
     min-height: 35em;
   }
   @media screen and (min-width: 1000px) {
-    width: 40%;
+    width: 80%;
     min-height: 35em;
   }
   @media screen and (min-width: 1200px) {
-    width: 30%;
+    width: 80%;
     min-height: 35em;
   }
 `;
@@ -46,6 +46,8 @@ export const CardContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+  height: 100%;
+  flex: 1;
 `;
 
 export const TextSection = styled.div`
@@ -81,6 +83,7 @@ export const LikeButton = styled.button`
   border-radius: 4px;
   transition: background-color 0.25s;
   cursor: pointer;
+  margin-top: auto;
   &:hover {
     background-color: #f6f6f6;
   }
