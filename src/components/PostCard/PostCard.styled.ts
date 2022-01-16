@@ -80,6 +80,7 @@ export const LikeButton = styled.button`
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: background-color 0.25s;
+  cursor: pointer;
   &:hover {
     background-color: #f6f6f6;
   }

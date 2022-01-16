@@ -5,13 +5,13 @@ import {
   CardContent,
   CardDate,
   CardImage,
-  CardText,
   CardTitle,
   LikeButton,
   PostCardContainer,
   TextSection,
 } from './PostCard.styled';
 import useLikeSystem from '../../hooks/useLikeSystem';
+import TruncatingText from '../TruncatingText';
 
 const PostCard: React.FC<APODImageDataType> = ({
   title,
@@ -36,7 +36,7 @@ const PostCard: React.FC<APODImageDataType> = ({
         <TextSection>
           <CardTitle>{title}</CardTitle>
           <CardDate>{dayjs(date).format('MMMM D YYYY')}</CardDate>
-          <CardText>{explanation}</CardText>
+          <TruncatingText>{explanation}</TruncatingText>
         </TextSection>
         <LikeButton onClick={onLikeClick} type="button">
           {likes.includes(date) ? 'Unlike' : 'Like'}
