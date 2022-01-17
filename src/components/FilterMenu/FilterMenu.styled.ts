@@ -28,7 +28,8 @@ export const FilterButton = styled.button`
 `;
 
 export const MenuContainer = styled.div`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.card};
+  border: solid 1px ${({ theme }) => theme.colors.border};
   z-index: 500;
   display: flex;
   flex-direction: column;
@@ -54,4 +55,18 @@ export const MenuTitle = styled.h2`
 export const FilterIconButton = styled.button`
   background: none;
   border: none;
+`;
+
+export const FilterIcon = styled.svg`
+  stroke: ${({ theme }) => theme.colors.filterButton};
+  fill: ${({ theme }) => theme.colors.filterButton};
+  transition: stroke 100ms, fill 100ms;
+  &:hover {
+    stroke: ${({ theme }) => theme.colors.filterButtonHover};
+    fill: ${({ theme }) => theme.colors.filterButtonHover};
+  }
+  &:active {
+    stroke: ${({ theme }) => theme.colors.filterButtonActive};
+    fill: ${({ theme }) => theme.colors.filterButtonActive};
+  }
 `;

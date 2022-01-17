@@ -27,9 +27,9 @@ export const colors: IColors = {
   button: '#FFFFFF',
   buttonHover: '#F6F6F6',
   buttonActive: '#ededed',
-  filterButton: '#ffc8ae',
-  filterButtonHover: '#ffb694',
-  filterButtonActive: '#ff9e71',
+  filterButton: '#5a6be3',
+  filterButtonHover: '#4557D7',
+  filterButtonActive: '#3648C6',
 };
 
 export const fonts: IFonts = {
