@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PostCardContainer = styled.div`
   background-color: white;
   border: 1px solid #c2c2c2;
-  width: 85%;
+  width: 100%;
   min-height: 30em;
   border-radius: 8px;
   display: flex;

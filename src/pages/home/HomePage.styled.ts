@@ -6,12 +6,12 @@ export const HomePageContainer = styled.div`
   min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
-  overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   margin-top: 10rem;
   margin-bottom: 5rem;
+  position: relative;
 `;
 
 export const CardContainer = styled.div`
@@ -36,6 +36,8 @@ export const FiltersContainer = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   width: 40%;
+  position: sticky;
+  top: 10rem;
   @media screen and (min-width: 1600px) {
     width: 30%;
   }
