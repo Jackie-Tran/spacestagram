@@ -9,8 +9,9 @@ export const HomePageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 10rem;
-  margin-bottom: 5rem;
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+  box-sizing: border-box;
   position: relative;
 `;
 

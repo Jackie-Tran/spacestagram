@@ -71,6 +71,7 @@ export const PostSidePanel = styled.div`
   flex-direction: column;
   align-items: flex-start;
   flex: 1;
+  overflow-y: auto;
   @media screen and (min-width: 800px) {
     padding: 1rem;
     box-sizing: border-box;
@@ -78,7 +79,6 @@ export const PostSidePanel = styled.div`
     flex: auto;
     flex-direction: column;
     justify-content: space-between;
-    overflow-y: scroll;
   }
 `;
 

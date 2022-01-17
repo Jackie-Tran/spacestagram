@@ -14,6 +14,7 @@ import {
 import useLikeSystem from '../../hooks/useLikeSystem';
 import TruncatingText from '../TruncatingText';
 import getShareLink from '../../utils/getShareLink';
+import useToastMessage from '../../hooks/useToastMessage';
 
 const PostCard: React.FC<APODImageDataType> = ({
   title,
@@ -22,6 +23,7 @@ const PostCard: React.FC<APODImageDataType> = ({
   explanation,
 }) => {
   const { likes, likeImage, unlikeImage } = useLikeSystem();
+  const { showMessage } = useToastMessage();
 
   const onLikeClick = () => {
     if (likes.includes(date)) {
@@ -29,6 +31,11 @@ const PostCard: React.FC<APODImageDataType> = ({
     } else {
       likeImage(date);
     }
+  };
+
+  const onShareClick = () => {
+    getShareLink(date);
+    showMessage('Link copied to clipboard!');
   };
 
   return (
@@ -44,7 +51,7 @@ const PostCard: React.FC<APODImageDataType> = ({
           <CardButton onClick={onLikeClick} type="button">
             {likes.includes(date) ? 'Unlike' : 'Like'}
           </CardButton>
-          <CardButton onClick={() => getShareLink(date)} type="button">
+          <CardButton onClick={onShareClick} type="button">
             Share
           </CardButton>
         </ButtonContainer>
