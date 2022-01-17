@@ -13,7 +13,11 @@ import Header from '../../components/Header';
 import LoadingContent from '../../components/LoadingContent';
 import PostCard from '../../components/PostCard';
 import FiltersContext from '../../context/FiltersContext';
-import { FiltersContainer, HomePageContainer } from './HomePage.styled';
+import {
+  CardContainer,
+  FiltersContainer,
+  HomePageContainer,
+} from './HomePage.styled';
 
 const HomePage: React.FC = () => {
   // Filters
@@ -41,14 +45,16 @@ const HomePage: React.FC = () => {
     >
       <HomePageContainer>
         <Header showFilterButton={isMobile} />
-        <LoadingContent
-          queryStatus={status}
-          noDataCondition={data !== undefined && data.length <= 0}
-        >
-          {data?.map(item => (
-            <PostCard key={item.title} {...item} />
-          ))}
-        </LoadingContent>
+        <CardContainer>
+          <LoadingContent
+            queryStatus={status}
+            noDataCondition={data !== undefined && data.length <= 0}
+          >
+            {data?.map(item => (
+              <PostCard key={item.title} {...item} />
+            ))}
+          </LoadingContent>
+        </CardContainer>
         {!isMobile && (
           <FiltersContainer>
             <MenuTitle>Filters</MenuTitle>

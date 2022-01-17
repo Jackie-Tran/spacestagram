@@ -24,13 +24,6 @@ export const ContentContainer = styled.div`
   box-sizing: border-box;
   position: relative;
   z-index: 1;
-
-  @media screen and (min-width: 1000px) {
-    width: 50%;
-  }
-  @media screen and (min-width: 1200px) {
-    width: 30%;
-  }
 `;
 
 export const LoadingText = styled.p`

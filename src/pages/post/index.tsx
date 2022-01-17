@@ -48,7 +48,7 @@ const PostPage: React.FC = () => {
             <PostSidePanel>
               <PostTitle>{data.title}</PostTitle>
               <CardDate>{dayjs(date).format('MMMM D YYYY')}</CardDate>
-              <TruncatingText maxLength={300}>
+              <TruncatingText maxLength={200}>
                 {data.explanation}
               </TruncatingText>
               <PostButtons>
