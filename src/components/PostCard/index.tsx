@@ -13,6 +13,7 @@ import {
 } from './PostCard.styled';
 import useLikeSystem from '../../hooks/useLikeSystem';
 import TruncatingText from '../TruncatingText';
+import getShareLink from '../../utils/getShareLink';
 
 const PostCard: React.FC<APODImageDataType> = ({
   title,
@@ -43,7 +44,9 @@ const PostCard: React.FC<APODImageDataType> = ({
           <CardButton onClick={onLikeClick} type="button">
             {likes.includes(date) ? 'Unlike' : 'Like'}
           </CardButton>
-          <CardButton type="button">Share</CardButton>
+          <CardButton onClick={() => getShareLink(date)} type="button">
+            Share
+          </CardButton>
         </ButtonContainer>
       </CardContent>
     </PostCardContainer>

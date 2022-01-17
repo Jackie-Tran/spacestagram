@@ -11,6 +11,7 @@ import {
 } from '../../components/PostCard/PostCard.styled';
 import TruncatingText from '../../components/TruncatingText';
 import useLikeSystem from '../../hooks/useLikeSystem';
+import getShareLink from '../../utils/getShareLink';
 import {
   Image,
   PostButtons,
@@ -54,7 +55,12 @@ const PostPage: React.FC = () => {
                 <CardButton onClick={onLikeClick} type="button">
                   {date && likes.includes(date) ? 'Unlike' : 'Like'}
                 </CardButton>
-                <CardButton type="button">Share</CardButton>
+                <CardButton
+                  type="button"
+                  onClick={() => getShareLink(data.date)}
+                >
+                  Share
+                </CardButton>
               </PostButtons>
             </PostSidePanel>
           </PostContainer>

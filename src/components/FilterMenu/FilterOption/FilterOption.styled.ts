@@ -37,5 +37,7 @@ export const DatePicker = styled.input`
   font-size: 1.1em;
   padding: 0.2rem 0.3em;
   border: 1px solid #cfcfcf;
+  background-color: white;
   border-radius: 4px;
+  width: 90%;
 `;
