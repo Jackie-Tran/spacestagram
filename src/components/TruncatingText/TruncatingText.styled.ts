@@ -6,6 +6,7 @@ export const TruncatingTextContainer = styled.div`
 
 export const TruncatedText = styled.p`
   ${({ theme }) => theme.fonts.quicksand};
+  color: ${({ theme }) => theme.colors.text};
   font-weight: 500;
   font-size: 1em;
   display: inline;
@@ -14,7 +15,7 @@ export const TruncatedText = styled.p`
 export const ShowMoreText = styled.button`
   display: inline;
   ${({ theme }) => theme.fonts.quicksand}
-  color: #cfcfcf;
+  color: ${({ theme }) => theme.colors.subheading};
   font-weight: 500;
   font-size: 1em;
   border: none;

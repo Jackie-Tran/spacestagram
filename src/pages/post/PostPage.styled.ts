@@ -7,6 +7,7 @@ export const PostPageContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: ${({ theme }) => theme.colors.background};
   overflow-x: hidden;
   box-sizing: border-box;
   padding: 5rem 0rem;

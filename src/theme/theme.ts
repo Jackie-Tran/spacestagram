@@ -1,22 +1,7 @@
 import { css } from 'styled-components';
 import { IColors, IFonts, ITheme } from './theme.types';
 
-// export const light: IColors = {
-//   background: '#F0E7DB',
-//   headerBackground: '#f4d9c5',
-//   headingText: '#7D3800',
-//   subheading: '#8E6A5A',
-//   text: '#000000',
-//   card: '#ffffff',
-//   border: '#c2c2c2',
-//   button: '#FFFFFF',
-//   buttonHover: '#F6F6F6',
-//   buttonActive: '#ededed',
-//   filterButton: '#ffc8ae',
-//   filterButtonHover: '#ffb694',
-//   filterButtonActive: '#ff9e71',
-// };
-export const colors: IColors = {
+export const light: IColors = {
   background: '#fafafa',
   headerBackground: '#ffffff',
   headingText: '#5a6be3',
@@ -36,15 +21,35 @@ export const colors: IColors = {
   toastText: '#ffffff',
 };
 
+export const dark: IColors = {
+  background: '#23272A',
+  headerBackground: '#2F3136',
+  headingText: '#b4bdff',
+  subheading: '#cdcdcd',
+  text: '#f3f3f3',
+  card: '#2F3136',
+  border: '#4D4D4D',
+  button: '#36343E',
+  buttonHover: '#312F38',
+  buttonActive: '#2C2B33',
+  filterButton: '#b4bdff',
+  filterButtonHover: '#9FA7E5',
+  filterButtonActive: '#808AD1',
+  toastSuccess: '#3BBD9F',
+  toastError: '#FD868B',
+  toastInfo: '#7C6FCC',
+  toastText: '#ffffff',
+};
+
 export const fonts: IFonts = {
   quicksand: css`
     font-family: 'Quicksand', sans-serif;
   `,
 };
 
-const Theme: ITheme = {
-  colors,
+const Theme = (colorMode: 'light' | 'dark'): ITheme => ({
+  colors: colorMode === 'light' ? light : dark,
   fonts,
-};
+});
 
 export default Theme;

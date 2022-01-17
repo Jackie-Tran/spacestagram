@@ -3,15 +3,14 @@ import styled from 'styled-components';
 
 export const HomePageContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
-  width: 80%;
+  width: 100%;
+  padding: 10rem 10% 5rem 10%;
   min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 10rem;
-  padding-bottom: 5rem;
   box-sizing: border-box;
   position: relative;
 `;

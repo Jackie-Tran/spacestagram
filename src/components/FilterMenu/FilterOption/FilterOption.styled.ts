@@ -8,7 +8,7 @@ export const FilterOptionContainer = styled.div`
 
 export const FilterOptionName = styled.h3`
   ${({ theme }) => theme.fonts.quicksand};
-  ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.text};
   font-size: 1.3em;
   font-weight: 600;
 `;
@@ -37,9 +37,10 @@ export const FilterLabel = styled.label`
 export const DatePicker = styled.input`
   ${({ theme }) => theme.fonts.quicksand}
   font-size: 1.1em;
-  padding: 0.2rem 0.3em;
-  border: 1px solid #cfcfcf;
-  background-color: white;
+  padding: 0.5rem;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  background-color: ${({ theme }) => theme.colors.button};
+  color: ${({ theme }) => theme.colors.text};
   border-radius: 4px;
   width: 90%;
 `;

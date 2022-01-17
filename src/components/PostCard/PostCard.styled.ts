@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 export const PostCardContainer = styled(motion.div)`
   background-color: ${({ theme }) => theme.colors.card};
-  color: ${({ theme }) => theme.colors.text};
   border: 1px solid ${({ theme }) => theme.colors.border};
   width: 100%;
   min-height: 30em;
@@ -59,18 +58,21 @@ export const TextSection = styled.div`
 
 export const CardTitle = styled.h1`
   ${({ theme }) => theme.fonts.quicksand};
+  color: ${({ theme }) => theme.colors.text};
   font-weight: 700;
   font-size: 1.3em;
 `;
 
 export const CardDate = styled.p`
   ${({ theme }) => theme.fonts.quicksand};
+  color: ${({ theme }) => theme.colors.text};
   font-weight: 600;
   font-size: 1.2em;
 `;
 
 export const CardText = styled.p`
   ${({ theme }) => theme.fonts.quicksand};
+  color: ${({ theme }) => theme.colors.text};
   font-weight: 500;
   font-size: 1em;
   margin: 0.5rem 0rem;
@@ -85,11 +87,12 @@ export const ButtonContainer = styled.div`
 export const CardButton = styled.button`
   ${({ theme }) => theme.fonts.quicksand}
   background-color: ${({ theme }) => theme.colors.button};
+  color: ${({ theme }) => theme.colors.text};
   border: solid 1px black;
   border-color: ${({ theme }) => theme.colors.border};
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  transition: background-color 0.25s;
+  /* transition: background-color 0.25s; */
   cursor: pointer;
   margin-top: auto;
   &:hover {
