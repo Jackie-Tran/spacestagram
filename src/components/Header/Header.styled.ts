@@ -37,3 +37,8 @@ export const Subtitle = styled.p`
   color: ${({ theme }) => theme.colors.subheading};
   font-size: 1.2em;
 `;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`;

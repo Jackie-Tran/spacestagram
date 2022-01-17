@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import ColorModeContext from '../../context/ColorModeContext';
 import FiltersContext from '../../context/FiltersContext';
+import ColorModeToggle from '../ColorModeToggle';
 import FilterMenu from '../FilterMenu';
 import FilterOption from '../FilterMenu/FilterOption';
 import {
+  ButtonsContainer,
   HeaderContainer,
   Subtitle,
   TextContainer,
@@ -16,7 +17,6 @@ const Header: React.FC<{ showFilterButton: boolean }> = ({
 }) => {
   const { startDate, setStartDate, endDate, setEndDate } =
     useContext(FiltersContext);
-  const { colorMode, setColorMode } = useContext(ColorModeContext);
 
   const showSubtitle = useMediaQuery({ query: '(min-width: 500px)' });
 
@@ -28,28 +28,25 @@ const Header: React.FC<{ showFilterButton: boolean }> = ({
           <Subtitle>Image sharing from the final frontier</Subtitle>
         )}
       </TextContainer>
-      <button
-        type="button"
-        onClick={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')}
-      >
-        toggle color mode
-      </button>
-      {showFilterButton && (
-        <FilterMenu>
-          <FilterOption
-            inputType="date"
-            filterName="Start Date"
-            currentFilter={startDate}
-            setFilter={setStartDate}
-          />
-          <FilterOption
-            inputType="date"
-            filterName="End Date"
-            currentFilter={endDate}
-            setFilter={setEndDate}
-          />
-        </FilterMenu>
-      )}
+      <ButtonsContainer>
+        <ColorModeToggle />
+        {showFilterButton && (
+          <FilterMenu>
+            <FilterOption
+              inputType="date"
+              filterName="Start Date"
+              currentFilter={startDate}
+              setFilter={setStartDate}
+            />
+            <FilterOption
+              inputType="date"
+              filterName="End Date"
+              currentFilter={endDate}
+              setFilter={setEndDate}
+            />
+          </FilterMenu>
+        )}
+      </ButtonsContainer>
     </HeaderContainer>
   );
 };
