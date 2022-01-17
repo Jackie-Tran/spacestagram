@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { GetAPODImages, APODImageDataType } from '../../api/getAPOD';
 import { useApiFetch } from '../../api/useApiFetch';
@@ -13,6 +13,7 @@ import Header from '../../components/Header';
 import LoadingContent from '../../components/LoadingContent';
 import PostCard from '../../components/PostCard';
 import FiltersContext from '../../context/FiltersContext';
+import useToastMessage from '../../hooks/useToastMessage';
 import {
   CardContainer,
   FiltersContainer,
@@ -31,8 +32,15 @@ const HomePage: React.FC = () => {
   const { status, data } = useApiFetch<APODImageDataType[]>(
     GetAPODImages({ startDate, endDate })
   );
+  const { showMessage } = useToastMessage();
 
   const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
+
+  useEffect(() => {
+    if (status === 'SUCCESS' && data && data?.length > 1) {
+      showMessage(`Successfully fetched ${data.length} photos.`);
+    }
+  }, [status, data]);
 
   return (
     <FiltersContext.Provider
@@ -45,7 +53,7 @@ const HomePage: React.FC = () => {
     >
       <HomePageContainer>
         <Header showFilterButton={isMobile} />
-        <CardContainer>
+        <CardContainer transition={{ staggerChildren: 1 }}>
           <LoadingContent
             queryStatus={status}
             noDataCondition={data !== undefined && data.length <= 0}

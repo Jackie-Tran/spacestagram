@@ -39,7 +39,12 @@ const PostCard: React.FC<APODImageDataType> = ({
   };
 
   return (
-    <PostCardContainer>
+    <PostCardContainer
+      initial={{ y: 100, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ type: 'tween', duration: 0.3, ease: 'easeOut' }}
+    >
       <CardImage src={url} />
       <CardContent>
         <TextSection>

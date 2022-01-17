@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const PostPageContainer = styled.div`
@@ -14,7 +15,7 @@ export const PostPageContainer = styled.div`
   }
 `;
 
-export const PostContainer = styled.div`
+export const PostContainer = styled(motion.div)`
   background-color: white;
   border-radius: 8px;
   display: flex;

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const HomePageContainer = styled.div`
@@ -15,7 +16,7 @@ export const HomePageContainer = styled.div`
   position: relative;
 `;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -37,7 +38,7 @@ export const FiltersContainer = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   width: 40%;
-  position: sticky;
+  /* position: sticky; */
   top: 10rem;
   @media screen and (min-width: 1600px) {
     width: 30%;

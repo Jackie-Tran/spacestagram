@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const PostCardContainer = styled.div`
+export const PostCardContainer = styled(motion.div)`
   background-color: white;
   border: 1px solid #c2c2c2;
   width: 100%;

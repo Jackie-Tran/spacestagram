@@ -43,7 +43,15 @@ const PostPage: React.FC = () => {
       <Header showFilterButton={false} />
       <LoadingContent queryStatus={status} noDataCondition={!data}>
         {data && (
-          <PostContainer>
+          <PostContainer
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              type: 'tween',
+              duration: 1,
+              ease: 'easeOut',
+            }}
+          >
             <Image src={data.url} />
             <PostSidePanel>
               <PostTitle>{data.title}</PostTitle>
