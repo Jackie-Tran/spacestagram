@@ -14,6 +14,10 @@ export interface IColors {
   filterButton: string;
   filterButtonHover: string;
   filterButtonActive: string;
+  toastSuccess: string;
+  toastError: string;
+  toastInfo: string;
+  toastText: string;
 }
 
 export interface IFonts {

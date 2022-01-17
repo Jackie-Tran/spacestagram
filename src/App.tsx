@@ -7,13 +7,14 @@ import Theme from './theme/theme';
 import HomePage from './pages/home';
 import LikesContext from './context/LikesContext';
 import PostPage from './pages/post';
-import ToastMessage from './components/ToastMessage';
+import ToastMessage, { ToastStatus } from './components/ToastMessage';
 import ToastContext from './context/ToastContext';
 
 const App: React.FC = () => {
   const [likes, setLikes] = useState<string[]>([]);
   const [isToastVisible, setToastVisible] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
+  const [toastStatus, setToastStatus] = useState<ToastStatus>('info');
   return (
     <React.StrictMode>
       <ThemeProvider theme={Theme}>
@@ -23,11 +24,15 @@ const App: React.FC = () => {
             setMessage: setToastMessage,
             isVisible: isToastVisible,
             setVisible: setToastVisible,
+            status: toastStatus,
+            setStatus: setToastStatus,
           }}
         >
           <LikesContext.Provider value={{ likes, setLikes }}>
             <AnimatePresence>
-              {isToastVisible && <ToastMessage message={toastMessage} />}
+              {isToastVisible && (
+                <ToastMessage message={toastMessage} status={toastStatus} />
+              )}
             </AnimatePresence>
             <Routes>
               <Route path="/" element={<HomePage />} />

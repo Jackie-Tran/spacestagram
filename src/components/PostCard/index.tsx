@@ -35,7 +35,7 @@ const PostCard: React.FC<APODImageDataType> = ({
 
   const onShareClick = () => {
     getShareLink(date);
-    showMessage('Link copied to clipboard!');
+    showMessage('Link copied to clipboard!', 'info');
   };
 
   return (

@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     if (status === 'SUCCESS' && data && data?.length > 1) {
-      showMessage(`Successfully fetched ${data.length} photos.`);
+      showMessage(`Successfully fetched ${data.length} photos.`, 'success');
     }
   }, [status, data]);
 
