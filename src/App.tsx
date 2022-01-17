@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Theme from './theme/theme';
 import HomePage from './pages/home';
 import LikesContext from './context/LikesContext';
+import PostPage from './pages/post';
 
 const App: React.FC = () => {
   const [likes, setLikes] = useState<string[]>([]);
@@ -14,6 +15,7 @@ const App: React.FC = () => {
         <LikesContext.Provider value={{ likes, setLikes }}>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path=":date" element={<PostPage />} />
           </Routes>
         </LikesContext.Provider>
       </ThemeProvider>

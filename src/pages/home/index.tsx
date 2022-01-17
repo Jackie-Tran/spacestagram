@@ -60,6 +60,7 @@ const HomePage: React.FC = () => {
                 max={dayjs(new Date()).format('YYYY-MM-DD')}
                 value={startDate}
                 onChange={e => setStartDate(e.target.value)}
+                required
               />
             </OptionsWrapper>
             <OptionsWrapper>
@@ -70,6 +71,7 @@ const HomePage: React.FC = () => {
                 max={dayjs(new Date()).format('YYYY-MM-DD')}
                 value={endDate}
                 onChange={e => setEndDate(e.target.value)}
+                required
               />
             </OptionsWrapper>
           </FiltersContainer>

@@ -2,11 +2,12 @@ import React from 'react';
 import dayjs from 'dayjs';
 import { APODImageDataType } from '../../api/getAPOD';
 import {
+  ButtonContainer,
+  CardButton,
   CardContent,
   CardDate,
   CardImage,
   CardTitle,
-  LikeButton,
   PostCardContainer,
   TextSection,
 } from './PostCard.styled';
@@ -38,9 +39,12 @@ const PostCard: React.FC<APODImageDataType> = ({
           <CardDate>{dayjs(date).format('MMMM D YYYY')}</CardDate>
           <TruncatingText>{explanation}</TruncatingText>
         </TextSection>
-        <LikeButton onClick={onLikeClick} type="button">
-          {likes.includes(date) ? 'Unlike' : 'Like'}
-        </LikeButton>
+        <ButtonContainer>
+          <CardButton onClick={onLikeClick} type="button">
+            {likes.includes(date) ? 'Unlike' : 'Like'}
+          </CardButton>
+          <CardButton type="button">Share</CardButton>
+        </ButtonContainer>
       </CardContent>
     </PostCardContainer>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React, { useState } from 'react';
 import {
   ShowMoreText,
@@ -5,7 +6,14 @@ import {
   TruncatingTextContainer,
 } from './TruncatingText.styled';
 
-export const TruncatingText: React.FC = ({ children }) => {
+type TruncatingTextProps = {
+  maxLength?: number;
+};
+
+export const TruncatingText: React.FC<TruncatingTextProps> = ({
+  maxLength = 100,
+  children,
+}) => {
   const [showMore, setShowMore] = useState<boolean>(false);
   const toggleText = () => {
     setShowMore(!showMore);
@@ -13,12 +21,12 @@ export const TruncatingText: React.FC = ({ children }) => {
 
   return (
     <TruncatingTextContainer>
-      {children && children?.toString().length > 100 ? (
+      {children && children?.toString().length > maxLength ? (
         <>
           <TruncatedText>
             {showMore
               ? children
-              : `${children?.toString().substring(0, 100)}\u{02026}`}
+              : `${children?.toString().substring(0, maxLength)}\u{02026}`}
             &nbsp;
           </TruncatedText>
           <ShowMoreText onClick={toggleText}>

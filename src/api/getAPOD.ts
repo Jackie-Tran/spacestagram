@@ -11,23 +11,26 @@ export type APODImageDataType = {
 };
 
 export type APODImagesQueryOptions = {
-  startDate: string;
-  endDate: string;
+  startDate?: string;
+  endDate?: string;
+  date?: string;
 };
 
 const buildParams = (params: any) =>
   Object.fromEntries(
-    Object.entries(params).filter(([_, value]) => value !== '')
+    Object.entries(params).filter(([_, value]) => value !== undefined)
   );
 
-export const GetAPODImages = ({
+export const GetAPODImages = <DataType>({
   startDate,
   endDate,
-}: APODImagesQueryOptions): ApiFetchParams<APODImageDataType[]> => ({
+  date,
+}: APODImagesQueryOptions): ApiFetchParams<DataType> => ({
   query: `https://api.nasa.gov/planetary/apod`,
   params: buildParams({
     start_date: startDate,
     end_date: endDate,
+    date,
   }),
   payload: {},
   responseTransformer: res => res.data,

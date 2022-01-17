@@ -74,7 +74,13 @@ export const CardText = styled.p`
   margin: 0.5rem 0rem;
 `;
 
-export const LikeButton = styled.button`
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+`;
+
+export const CardButton = styled.button`
   ${({ theme }) => theme.fonts.quicksand}
   background-color: white;
   border: solid 1px black;
