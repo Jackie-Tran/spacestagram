@@ -16,7 +16,8 @@ export const PostPageContainer = styled.div`
 `;
 
 export const PostContainer = styled(motion.div)`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.card};
+  border: solid 1px ${({ theme }) => theme.colors.border};
   border-radius: 8px;
   display: flex;
   flex-direction: column;

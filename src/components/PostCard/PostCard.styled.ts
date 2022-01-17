@@ -2,8 +2,9 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const PostCardContainer = styled(motion.div)`
-  background-color: white;
-  border: 1px solid #c2c2c2;
+  background-color: ${({ theme }) => theme.colors.card};
+  color: ${({ theme }) => theme.colors.text};
+  border: 1px solid ${({ theme }) => theme.colors.border};
   width: 100%;
   min-height: 30em;
   border-radius: 8px;
@@ -83,19 +84,19 @@ export const ButtonContainer = styled.div`
 
 export const CardButton = styled.button`
   ${({ theme }) => theme.fonts.quicksand}
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.button};
   border: solid 1px black;
-  border-color: #c2c2c2;
+  border-color: ${({ theme }) => theme.colors.border};
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: background-color 0.25s;
   cursor: pointer;
   margin-top: auto;
   &:hover {
-    background-color: #f6f6f6;
+    background-color: ${({ theme }) => theme.colors.buttonHover};
   }
 
   &:active {
-    background-color: #ededed;
+    background-color: ${({ theme }) => theme.colors.buttonActive};
   }
 `;

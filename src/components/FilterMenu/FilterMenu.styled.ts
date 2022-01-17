@@ -10,7 +10,7 @@ export const FilterWrapper = styled.div`
 
 export const FilterButton = styled.button`
   border: none;
-  background-color: #ffc8ae;
+  background-color: ${({ theme }) => theme.colors.filterButton};
   ${({ theme }) => theme.fonts.quicksand};
   color: white;
   font-size: 1.2em;
@@ -20,10 +20,10 @@ export const FilterButton = styled.button`
   border-radius: 8px;
   transition: background-color 0.2s;
   &:hover {
-    background-color: #ffb694;
+    background-color: ${({ theme }) => theme.colors.filterButtonHover};
   }
   &:active {
-    background-color: #ff9e71;
+    background-color: ${({ theme }) => theme.colors.filterButtonActive};
   }
 `;
 
@@ -48,6 +48,7 @@ export const MenuTitle = styled.h2`
   font-weight: 700;
   font-size: 2em;
   text-decoration: underline;
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 export const FilterIconButton = styled.button`

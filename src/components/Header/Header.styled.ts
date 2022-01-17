@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
-  background-color: #f4d9c5;
+  background-color: ${({ theme }) => theme.colors.headerBackground};
   padding: 1.5rem;
   box-sizing: border-box;
   display: flex;
@@ -13,6 +14,7 @@ export const HeaderContainer = styled.div`
   left: 0;
   width: 100%;
   z-index: 500;
+  border-bottom: solid 1px ${({ theme }) => theme.colors.border};
 `;
 
 export const TextContainer = styled.div`
@@ -20,11 +22,14 @@ export const TextContainer = styled.div`
   flex-direction: column;
 `;
 
-export const Title = styled.h1`
+export const Title = styled(Link)`
   ${({ theme }) => theme.fonts.quicksand};
   color: ${({ theme }) => theme.colors.headingText};
   font-size: 1.75em;
   font-weight: 700;
+  border: none;
+  background: none;
+  text-decoration: none;
 `;
 
 export const Subtitle = styled.p`

@@ -3,9 +3,17 @@ import { FlattenSimpleInterpolation } from 'styled-components';
 export interface IColors {
   background: string;
   headingText: string;
+  headerBackground: string;
   subheading: string;
   text: string;
-  white: string;
+  card: string;
+  border: string;
+  button: string;
+  buttonHover: string;
+  buttonActive: string;
+  filterButton: string;
+  filterButtonHover: string;
+  filterButtonActive: string;
 }
 
 export interface IFonts {

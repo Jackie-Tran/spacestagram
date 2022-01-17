@@ -9,7 +9,7 @@ export const ToastContainer = styled(motion.div)`
   width: 80%;
   margin-right: auto;
   margin-left: auto;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.card};
   border-radius: 4px;
   padding: 1rem;
   box-sizing: border-box;
