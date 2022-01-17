@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import ColorModeContext from '../../context/ColorModeContext';
+import React from 'react';
+import useColorMode from '../../hooks/useColorMode';
 import ToggleContainer from './ColorModeToggle.styled';
 
 const ColorModeToggle: React.FC = () => {
-  const { colorMode, setColorMode } = useContext(ColorModeContext);
+  const { colorMode, toggleColorMode } = useColorMode();
 
   const onClick = () => {
-    setColorMode(colorMode === 'light' ? 'dark' : 'light');
+    toggleColorMode();
   };
 
   return (

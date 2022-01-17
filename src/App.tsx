@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { ThemeProvider } from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
@@ -12,15 +12,26 @@ import ToastContext from './context/ToastContext';
 import ColorModeContext from './context/ColorModeContext';
 
 const App: React.FC = () => {
-  const [colorMode, setColorMode] = useState<'light' | 'dark'>('light');
+  const [colorMode, setColorMode] = useState<'light' | 'dark'>(
+    localStorage.getItem('colorMode')
+      ? (localStorage.getItem('colorMode') as 'light' | 'dark')
+      : 'light'
+  );
   const [likes, setLikes] = useState<string[]>([]);
   const [isToastVisible, setToastVisible] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string>('');
   const [toastStatus, setToastStatus] = useState<ToastStatus>('info');
+  const theme = Theme(colorMode);
+
+  useEffect(() => {
+    const { body } = document;
+    body.style.setProperty('background-color', theme.colors.background);
+  }, []);
+
   return (
     <React.StrictMode>
       <ColorModeContext.Provider value={{ colorMode, setColorMode }}>
-        <ThemeProvider theme={Theme(colorMode)}>
+        <ThemeProvider theme={theme}>
           <ToastContext.Provider
             value={{
               message: toastMessage,
