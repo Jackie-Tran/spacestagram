@@ -82,6 +82,7 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 0.5rem;
+  margin-top: 1rem;
 `;
 
 export const CardButton = styled.button`
