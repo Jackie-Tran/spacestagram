@@ -1,18 +1,26 @@
 import React from 'react';
-import { QueryStatus } from '../../api/useApiFetch';
-import Spinner from '../../images/loader.gif';
+import { QueryStatus } from '../../context/useApiFetch';
+import LightSpinner from '../../images/light-loader.gif';
+import DarkSpinner from '../../images/dark-loader.gif';
 import {
   ContentContainer,
   LoadingText,
   SpinnerContainer,
   SpinnerImage,
 } from './LoadingContent.styled';
+import useColorMode from '../../hooks/useColorMode';
 
-const LoadingSpinner: React.FC = () => (
-  <SpinnerContainer>
-    <SpinnerImage src={Spinner} alt="spinner" />
-  </SpinnerContainer>
-);
+const LoadingSpinner: React.FC = () => {
+  const { colorMode } = useColorMode();
+  return (
+    <SpinnerContainer>
+      <SpinnerImage
+        src={colorMode === 'light' ? LightSpinner : DarkSpinner}
+        alt="spinner"
+      />
+    </SpinnerContainer>
+  );
+};
 
 type LoadingContentProps = {
   queryStatus: QueryStatus;

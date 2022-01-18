@@ -1,5 +1,5 @@
-import dayjs from 'dayjs';
 import React, { Dispatch, SetStateAction } from 'react';
+import dateUtils from '../../../utils/dateUtils';
 import {
   DatePicker,
   FilterLabel,
@@ -36,7 +36,7 @@ const FilterOption: React.FC<FilterOptionProps> = ({
             type={inputType}
             id="captureDate"
             name="capture-date"
-            max={dayjs(new Date()).format('YYYY-MM-DD')}
+            max={dateUtils.formatDate(new Date())}
             value={currentFilter}
             onChange={onChange}
           />

@@ -1,5 +1,4 @@
 import React from 'react';
-import dayjs from 'dayjs';
 import { APODImageDataType } from '../../api/getAPOD';
 import {
   ButtonContainer,
@@ -15,6 +14,7 @@ import useLikeSystem from '../../hooks/useLikeSystem';
 import TruncatingText from '../TruncatingText';
 import getShareLink from '../../utils/getShareLink';
 import useToastMessage from '../../hooks/useToastMessage';
+import dateUtils from '../../utils/dateUtils';
 
 const PostCard: React.FC<APODImageDataType> = ({
   title,
@@ -49,12 +49,12 @@ const PostCard: React.FC<APODImageDataType> = ({
       <CardContent>
         <TextSection>
           <CardTitle>{title}</CardTitle>
-          <CardDate>{dayjs(date).format('MMMM D YYYY')}</CardDate>
+          <CardDate>{dateUtils.formatDate(date)}</CardDate>
           <TruncatingText>{explanation}</TruncatingText>
         </TextSection>
         <ButtonContainer>
           <CardButton onClick={onLikeClick} type="button">
-            {likes.includes(date) ? 'Unlike' : 'Like'}
+            {likes.includes(date) ? 'Liked' : 'Like'}
           </CardButton>
           <CardButton onClick={onShareClick} type="button">
             Share

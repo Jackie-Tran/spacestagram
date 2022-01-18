@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
 import { ThemeProvider } from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
@@ -9,12 +8,12 @@ import LikesContext from './context/LikesContext';
 import PostPage from './pages/post';
 import ToastMessage, { ToastStatus } from './components/ToastMessage';
 import ToastContext from './context/ToastContext';
-import ColorModeContext from './context/ColorModeContext';
+import ColorModeContext, { ColorMode } from './context/ColorModeContext';
 
 const App: React.FC = () => {
-  const [colorMode, setColorMode] = useState<'light' | 'dark'>(
+  const [colorMode, setColorMode] = useState<ColorMode>(
     localStorage.getItem('colorMode')
-      ? (localStorage.getItem('colorMode') as 'light' | 'dark')
+      ? (localStorage.getItem('colorMode') as ColorMode)
       : 'light'
   );
   const [likes, setLikes] = useState<string[]>([]);

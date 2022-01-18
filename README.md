@@ -19,7 +19,7 @@ Create a webpge that can pull images, and allow the user to "like" and "unlike" 
 - Light/Dark mode
 - Likes are saved in local storage
 - Loading state while waiting for NASA's API response
-- Start date and end date picker to browse photos from a specific set of days
+- Start date and end date picker to browse photos for a specific date range
 - Shareable links
 
 ## Technology Used

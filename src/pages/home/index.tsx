@@ -1,8 +1,7 @@
-import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { GetAPODImages, APODImageDataType } from '../../api/getAPOD';
-import { useApiFetch } from '../../api/useApiFetch';
+import { useApiFetch } from '../../context/useApiFetch';
 import { MenuTitle } from '../../components/FilterMenu/FilterMenu.styled';
 import {
   DatePicker,
@@ -19,22 +18,21 @@ import {
   FiltersContainer,
   HomePageContainer,
 } from './HomePage.styled';
+import dateUtils from '../../utils/dateUtils';
 
 const HomePage: React.FC = () => {
-  // Filters
   const [startDate, setStartDate] = useState<string>(
-    dayjs(new Date()).format('YYYY-MM-DD')
+    dateUtils.parseDate(new Date())
   );
   const [endDate, setEndDate] = useState<string>(
-    dayjs(new Date()).format('YYYY-MM-DD')
+    dateUtils.parseDate(new Date())
   );
-
   const { status, data } = useApiFetch<APODImageDataType[]>(
     GetAPODImages({ startDate, endDate })
   );
   const { showMessage } = useToastMessage();
 
-  const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
+  const showFilterButton = useMediaQuery({ query: '(max-width: 1000px)' });
 
   useEffect(() => {
     if (status === 'SUCCESS' && data && data?.length > 1) {
@@ -52,7 +50,7 @@ const HomePage: React.FC = () => {
       }}
     >
       <HomePageContainer>
-        <Header showFilterButton={isMobile} />
+        <Header showFilterButton={showFilterButton} />
         <CardContainer transition={{ staggerChildren: 1 }}>
           <LoadingContent
             queryStatus={status}
@@ -63,7 +61,7 @@ const HomePage: React.FC = () => {
             ))}
           </LoadingContent>
         </CardContainer>
-        {!isMobile && (
+        {!showFilterButton && (
           <FiltersContainer>
             <MenuTitle>Filters</MenuTitle>
             <OptionsWrapper>
@@ -71,7 +69,7 @@ const HomePage: React.FC = () => {
               <DatePicker
                 type="date"
                 name="start-date"
-                max={dayjs(new Date()).format('YYYY-MM-DD')}
+                max={dateUtils.parseDate(new Date())}
                 value={startDate}
                 onChange={e => setStartDate(e.target.value)}
                 required
@@ -82,7 +80,7 @@ const HomePage: React.FC = () => {
               <DatePicker
                 type="date"
                 name="end-date"
-                max={dayjs(new Date()).format('YYYY-MM-DD')}
+                max={dateUtils.parseDate(new Date())}
                 value={endDate}
                 onChange={e => setEndDate(e.target.value)}
                 required

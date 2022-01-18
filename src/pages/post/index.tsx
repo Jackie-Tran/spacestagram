@@ -1,8 +1,7 @@
-import dayjs from 'dayjs';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { APODImageDataType, GetAPODImages } from '../../api/getAPOD';
-import { useApiFetch } from '../../api/useApiFetch';
+import { useApiFetch } from '../../context/useApiFetch';
 import Header from '../../components/Header';
 import LoadingContent from '../../components/LoadingContent';
 import {
@@ -20,6 +19,7 @@ import {
   PostSidePanel,
   PostTitle,
 } from './PostPage.styled';
+import dateUtils from '../../utils/dateUtils';
 
 const PostPage: React.FC = () => {
   const { date } = useParams();
@@ -55,13 +55,13 @@ const PostPage: React.FC = () => {
             <Image src={data.url} />
             <PostSidePanel>
               <PostTitle>{data.title}</PostTitle>
-              <CardDate>{dayjs(date).format('MMMM D YYYY')}</CardDate>
+              {date && <CardDate>{dateUtils.formatDate(date)}</CardDate>}
               <TruncatingText maxLength={200}>
                 {data.explanation}
               </TruncatingText>
               <PostButtons>
                 <CardButton onClick={onLikeClick} type="button">
-                  {date && likes.includes(date) ? 'Unlike' : 'Like'}
+                  {date && likes.includes(date) ? 'Liked' : 'Like'}
                 </CardButton>
                 <CardButton
                   type="button"

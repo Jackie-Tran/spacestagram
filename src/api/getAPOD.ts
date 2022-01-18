@@ -1,4 +1,4 @@
-import { ApiFetchParams } from './useApiFetch';
+import { ApiFetchParams } from '../context/useApiFetch';
 
 export type APODImageDataType = {
   copyright: string;
